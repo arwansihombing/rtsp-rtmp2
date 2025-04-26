@@ -52,6 +52,11 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+# Create necessary directories and set permissions
+mkdir -p /var/www/rtsp-gateway/storage/logs
+chown -R www-data:www-data /var/www/rtsp-gateway/storage
+chmod -R 775 /var/www/rtsp-gateway/storage
+
 # Set up Supervisor for FFmpeg processes
 cat > /etc/supervisor/conf.d/rtsp-gateway.conf << EOL
 [program:rtsp-gateway-worker]
